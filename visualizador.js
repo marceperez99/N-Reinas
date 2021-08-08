@@ -4,24 +4,24 @@ const initState = {
     queens: []
 }
 
-const generateTablero = (n)=>{
+const generateTablero = (n) => {
     const tabla = document.createElement('table');
-    tabla.className='col-6 border rounded mx-auto m-2 text-center'
-    for(let i = 0;i < n; i++){
+    tabla.className = 'col-6 border rounded mx-auto m-2 text-center'
+    for (let i = 0; i < n; i++) {
         const row = document.createElement('tr');
-        for(let j = 0; j < n; j++){
+        for (let j = 0; j < n; j++) {
             const cell = document.createElement('td');
-            if((i+j)%2 === 0 ){
-                cell.setAttribute('style','background-color: grey');
-            }else{
-                cell.setAttribute('style','background-color: white');
+            if ((i + j) % 2 === 0) {
+                cell.setAttribute('style', 'background-color: grey');
+            } else {
+                cell.setAttribute('style', 'background-color: white');
             }
-            cell.className='p-1';
+            cell.className = 'p-1';
             const queen = document.createElement('img');
             queen.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Chess_qdt45.svg/800px-Chess_qdt45.svg.png');
-            queen.setAttribute('height','50px');
-            queen.id=`queen_${}`
-            
+            queen.setAttribute('height', '50px');
+            queen.id = `queen_${i}`
+
             cell.appendChild(queen);
             row.appendChild(cell);
         }
@@ -30,7 +30,7 @@ const generateTablero = (n)=>{
     return tabla;
 }
 
-const graficar = (i,j,action) => {
-    
+const graficar = (i, j, action) => {
+
 };
-    
+
