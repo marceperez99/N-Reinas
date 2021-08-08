@@ -24,20 +24,20 @@
             <label class="col-4" for="n_size">Algoritmo a utilizar</label>
         </div>
         <div class="row p-2">
-            <div class="col-4">        
+            <div class="col-4">
                 <div class="input-group mb-3">
-                <input type="text" class="form-control" id="n_size" aria-describedby="basic-addon3">
+                    <input type="text" class="form-control" id="n_size" aria-describedby="basic-addon3">
                 </div>
             </div>
             <div class="col-4">
                 <div class="input-group mb-3">
                     <select class="custom-select" id="algoritmo">
-                      <option selected>Choose...</option>
-                      <option value="1">Backtracking</option>
-                      <option value="2">Las Vegas</option>
-                      <option value="3">Heuristica</option>
+                        <option selected>Choose...</option>
+                        <option value="1">Backtracking</option>
+                        <option value="2">Las Vegas</option>
+                        <option value="3">Heuristica</option>
                     </select>
-                  </div>
+                </div>
             </div>
             <div class="col-4 text-right">
                 <button class="btn btn-primary">Ejecutar Simulacion</button>
@@ -81,13 +81,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-        <script>
-            const tablero = document.getElementById("tablero");
-            tablero.innerHTML = ''
-            tablero.appendChild(generateTablero(7))
-            
-            
-        </script>
+    <script>
+        const tablero = document.getElementById("tablero");
+        tablero.innerHTML = ''
+        tablero.appendChild(generateTablero(7))
+
+    </script>
 </body>
 
 </html>
