@@ -1,0 +1,1 @@
+const algoritmo_heuristico = (n) => { };
