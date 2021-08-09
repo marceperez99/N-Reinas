@@ -27,7 +27,7 @@ const generateTablero = (n) => {
     return tabla;
 }
 
-const graficar = (i,j,action) => {
+const graficar_reina = (i,j,action) => {
     const queen = document.getElementById(`queen_${i}_${j}`);
     switch(action){
         case ACTIONS.COLOCAR:
@@ -77,7 +77,7 @@ document.getElementById('iniciar_simulacion').addEventListener('click',() => {
     }
 
     const beforeTime = new Date();
-    algorithm(state.n);
+    algorithm(graficar_reina,state.n);
     const afterTime = new Date();
 
     const executionTime = afterTime.getTime() - beforeTime.getTime();

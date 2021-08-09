@@ -5,18 +5,18 @@ function mostrar(reinas) {
     console.log(reinas)
 }
 
-const algoritmo_heuristico = (n) => {
+const algoritmo_heuristico = (graficar_reina,n) => {
     //Inicio del algoritmo
-    let reinas = [2, 2, 1, 0]
+    let reinas = new Array(n)
     //Inicializa todas las variables aleatoriamente
-    /*for (let i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
         reinas[i] = getRandomInt(n)
 
-    }*/
+    }
     //Proceso de reparación heurística
     let paso = 0
     let ultima_columna = -1
-    while (false) {
+    while (true) {
         paso++
 
         //Consigue una variable aleatoria que no satisfaga la condición del PSR
@@ -25,7 +25,7 @@ const algoritmo_heuristico = (n) => {
         for (let i = 0; i < n; i++) {
             for (let j = 0; j < n; j++) {
                 if (i != j) {
-                    if (reinas[i] == reinas[j] || i + reinas[i] == j + reinas[j] || Math.abs(i - reinas[i]) == Math.abs(j - reinas[j])) {
+                    if (reinas[i] == reinas[j] || i + reinas[i] == j + reinas[j] || (i - reinas[i]) == (j - reinas[j])) {
                         if (!columnas_agregadas.has(i)) {
                             reinas_en_conflicto.push(i)
                             columnas_agregadas.set(i, true)
@@ -41,7 +41,9 @@ const algoritmo_heuristico = (n) => {
 
         if (reinas_en_conflicto.length == 0) {
             console.log("Encontre la solución")
-            mostrar(reinas)
+            for (let i = 0; i < n; i++) {
+                graficar_reina(reinas[i],i,ACTIONS.COLOCAR)
+            }
             break;
         }
         mostrar(reinas)
@@ -52,7 +54,11 @@ const algoritmo_heuristico = (n) => {
         console.log("Esta es la columna conflictiva: " + columna_en_conflicto)
 
         //Encontrar numero de conflictos
-        let conflictos = new Array(n).fill(0)
+        let conflictos = new Array(n)
+        for(let i=0;i<n;i++){
+            conflictos[i]=0
+        }
+        console.log(conflictos)
         //La i representa la fila
         for (let i = 0; i < n; i++) {
             //Conflicto en fila
@@ -60,7 +66,6 @@ const algoritmo_heuristico = (n) => {
                 if (columna_en_conflicto != j) {
                     if (i == reinas[j]) {
                         conflictos[i]++
-                        break;
                     }
                 }
             }
@@ -71,7 +76,7 @@ const algoritmo_heuristico = (n) => {
                 if (columna_en_conflicto != j) {
                     if (columna_en_conflicto + i == reinas[j] + j) {
                         conflictos[i]++
-                        break;
+                        
                     }
                 }
             }
@@ -81,7 +86,6 @@ const algoritmo_heuristico = (n) => {
                 if (columna_en_conflicto != j) {
                     if (columna_en_conflicto - i == j - reinas[j]) {
                         conflictos[i]++
-                        break;
                     }
                 }
             }
@@ -103,14 +107,17 @@ const algoritmo_heuristico = (n) => {
                 minimos.push(i)
             }
         }
+        
         let nueva_posicion = minimos[getRandomInt(minimos.length)]
-        console.log("Esta es la nueva posicion: " + nueva_posicion)
-
+        console.log("la nueva posicion es: " + nueva_posicion )
+        
+        
         reinas[columna_en_conflicto] = nueva_posicion
+        
 
 
     }
     //Fin del algoritmo
-
+    
 
 };
