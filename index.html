@@ -11,10 +11,6 @@
 </head>
 
 <body>
-    <script src="visualizador.js"></script>
-    <script src="algoritmos/backtracking.js"></script>
-    <script src="algoritmos/heuristica.js"></script>
-    <script src="algoritmos/las_vegas.js"></script>
     <div class="container">
         <h5 class="text-center m-4 h3">Problema N-Reinas</h5>
         <h4>Parametros de la Simulacion</h4>
@@ -26,52 +22,47 @@
         <div class="row p-2">
             <div class="col-4">        
                 <div class="input-group mb-3">
-                <input type="text" class="form-control" id="n_size" aria-describedby="basic-addon3">
+                <input type="number" min="3" max="50" class="form-control" id="n_size" aria-describedby="basic-addon3">
                 </div>
             </div>
             <div class="col-4">
                 <div class="input-group mb-3">
-                    <select class="custom-select" id="algoritmo">
-                      <option selected>Choose...</option>
-                      <option value="1">Backtracking</option>
-                      <option value="2">Las Vegas</option>
-                      <option value="3">Heuristica</option>
+                    <select class="custom-select" id="algoritmo_elegido">
+                      <option value="backtracking">Backtracking</option>
+                      <option value="las_vegas">Las Vegas</option>
+                      <option value="heuristica">Heuristica</option>
                     </select>
                   </div>
             </div>
             <div class="col-4 text-right">
-                <button class="btn btn-primary">Ejecutar Simulacion</button>
+                <button id="iniciar_simulacion" class="btn btn-primary">Ejecutar Simulacion</button>
             </div>
         </div>
         <h4 class="mt-3">Tablero</h4>
         <hr>
         <div class="row" id="tablero">
             <table class="" style="height: 500px;">
-                <tr>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                </tr>
-                <tr>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                </tr>
-                <tr>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                </tr>
+                
             </table>
         </div>
 
         <h4 class="mt-3">Resultados</h4>
         <hr>
         <div class="row">
-
+            <table class="table" id="resultadosTable">
+                <tr>
+                    <th>N</th>
+                    <th>Algoritmo</th>
+                    <th>Tiempo de Ejecución</th>
+                </tr>
+            </table>
         </div>
     </div>
-
+    <script src="state.js"></script>
+    <script src="visualizador.js"></script>
+    <script src="algoritmos/backtracking.js"></script>
+    <script src="algoritmos/heuristica.js"></script>
+    <script src="algoritmos/las_vegas.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -81,13 +72,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-        <script>
-            const tablero = document.getElementById("tablero");
-            tablero.innerHTML = ''
-            tablero.appendChild(generateTablero(7))
-            
-            
-        </script>
 </body>
-
 </html>
