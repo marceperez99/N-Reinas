@@ -1,20 +1,7 @@
-<<<<<<< HEAD
-const initState = {
-    n: undefined,
-    algorithm: undefined,
-    queens: []
-}
-
-const generateTablero = (n) => {
-    const tabla = document.createElement('table');
-    tabla.className = 'col-6 border rounded mx-auto m-2 text-center'
-    for (let i = 0; i < n; i++) {
-=======
 const generateTablero = (n) => {
     const tabla = document.createElement('table');
     tabla.className='border rounded mx-auto m-2 text-center'
     for(let i = 0;i < n; i++){
->>>>>>> main
         const row = document.createElement('tr');
         for (let j = 0; j < n; j++) {
             const cell = document.createElement('td');
@@ -23,25 +10,15 @@ const generateTablero = (n) => {
             } else {
                 cell.setAttribute('style', 'background-color: white');
             }
-<<<<<<< HEAD
-            cell.className = 'p-1';
-=======
         
->>>>>>> main
             const queen = document.createElement('img');
             queen.setAttribute('style','height: 50px')
             queen.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Chess_qdt45.svg/800px-Chess_qdt45.svg.png');
-<<<<<<< HEAD
-            queen.setAttribute('height', '50px');
-            queen.id = `queen_${i}`
-
-=======
             
             queen.setAttribute('style','display: none');
             queen.id = `queen_${i}_${j}`;
             cell.setAttribute('height','50px');
             cell.setAttribute('width','50px');
->>>>>>> main
             cell.appendChild(queen);
             row.appendChild(cell);
         }
@@ -50,12 +27,6 @@ const generateTablero = (n) => {
     return tabla;
 }
 
-<<<<<<< HEAD
-const graficar = (i, j, action) => {
-
-};
-
-=======
 const graficar = (i,j,action) => {
     const queen = document.getElementById(`queen_${i}_${j}`);
     switch(action){
@@ -117,4 +88,3 @@ document.getElementById('iniciar_simulacion').addEventListener('click',() => {
 const tablero = document.getElementById("tablero");
 tablero.innerHTML = ''
 tablero.appendChild(generateTablero(state.n));
->>>>>>> main
