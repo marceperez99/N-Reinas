@@ -27,7 +27,7 @@ const generateTablero = (n) => {
     return tabla;
 }
 
-const graficar_reina = (i,j,action) => {
+const graficarReina = (i,j,action) => {
     const queen = document.getElementById(`queen_${i}_${j}`);
     switch(action){
         case ACTIONS.COLOCAR:
@@ -38,7 +38,7 @@ const graficar_reina = (i,j,action) => {
         break;
     }
 };
-const registarResultado = (time, algorithm, n) => {
+const registarResultado = (n, algorithm, time, nodos) => {
     
     const resutadosTable = document.getElementById('resultadosTable');
     const row = document.createElement('tr');
@@ -51,15 +51,46 @@ const registarResultado = (time, algorithm, n) => {
     cell = document.createElement('td');
     cell.innerText = time;
     row.appendChild(cell);
+    cell = document.createElement('td');
+    cell.innerText = nodos;
+    row.appendChild(cell);
     resutadosTable.appendChild(row);
 }
+
 const algoritmoElegido = document.getElementById('algoritmo_elegido');
 algoritmoElegido.value = state.algorithm;
-algoritmoElegido.addEventListener('change', updateState('algorithm'));
+algoritmoElegido.addEventListener('change', (e) => {
+    const newState = updateState('algorithm')(e);
+    const timeoutInput = document.getElementById('timeout_input');
+    if (newState.algorithm === "las_vegas"){
+        timeoutInput.setAttribute('style','display: block');
+    } else {
+        timeoutInput.setAttribute('style','display: none');
+    }
+});
+
 const size = document.getElementById('n_size');
 size.value = state.n;
 size.addEventListener('change', updateState('n'));
-document.getElementById('iniciar_simulacion').addEventListener('click',() => {
+
+const timeout = document.getElementById('timeout');
+timeout.value = state.timeout;
+timeout.addEventListener('change', updateState('timeout'));
+
+
+const graficarSolucion = document.getElementById('graficarFlag');
+graficarSolucion.checked = state.graficarSolucion;
+graficarSolucion.addEventListener('change', (e) => { 
+    state.graficarSolucion = e.target.checked;
+    const tablero = document.getElementById('tableroSolucion');
+    if(state.graficarSolucion){
+        tablero.setAttribute('style','display: block');
+    }else{
+        tablero.setAttribute('style','display: none');
+    }
+});
+
+document.getElementById('iniciar_simulacion').addEventListener('click', () => {
     const tablero = document.getElementById("tablero");
     tablero.innerHTML = ''
     tablero.appendChild(generateTablero(state.n));
@@ -77,11 +108,20 @@ document.getElementById('iniciar_simulacion').addEventListener('click',() => {
     }
 
     const beforeTime = new Date();
-    algorithm(graficar_reina,state.n);
+    const result = algorithm(state.n);
     const afterTime = new Date();
+    console.log(result);
+    if(result){
+        if(state.graficarSolucion)
+            result.reinas.forEach((reina, i) => {graficarReina(i, reina,ACTIONS.COLOCAR)});
 
-    const executionTime = afterTime.getTime() - beforeTime.getTime();
-    registarResultado(executionTime, state.algorithm, state.n);
+        const executionTime = afterTime.getTime() - beforeTime.getTime();
+        registarResultado(state.n, state.algorithm, executionTime, result.estados);
+    }else{
+        registarResultado(state.n, state.algorithm, 'No hay solución', '-');
+    }
+
+    
 });
 
     

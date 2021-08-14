@@ -101,7 +101,7 @@ const algoritmo_heuristico = (n) => {
     if (n == 2 || n == 3)
         return undefined
     let reinas = new Array(n)
-    let estados = new Map()
+    let estados = new Set()
 
     inicializarTableroAleatoriamente(reinas)
     

@@ -1,5 +1,5 @@
 let pasos_backtracking = 0
-let estados = new Map()
+let estados = new Set();
 function verificar_conflictos(columnas) {
     var len = columnas.length, last = columnas[len - 1], prev = len - 2
 

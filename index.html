@@ -39,12 +39,20 @@
                 <button id="iniciar_simulacion" class="btn btn-primary">Ejecutar Simulacion</button>
             </div>
         </div>
-        <h4 class="mt-3">Tablero</h4>
-        <hr>
-        <div class="row" id="tablero">
-            <table class="" style="height: 500px;">
-                
-            </table>
+        <div class="row p-2" id="timeout_input" style="display: none;">
+            <label class="col-12" for="timeout">Timeout del Algoritmo</label>
+            <div class="col-4 input-group mb-3">
+                <input type="number" min="3" max="50" class="form-control" id="timeout" aria-describedby="basic-addon3">
+            </div>
+        </div>
+        
+        <input checked type="checkbox" id="graficarFlag" />
+        <label for="graficarFlag" class="px-2">Graficar Solución</label>
+        <div id=tableroSolucion>
+            <h4 class="mt-3">Tablero</h4>
+            <hr>
+            <div class="row" id="tablero">
+            </div>
         </div>
 
         <h4 class="mt-3">Resultados</h4>
@@ -55,6 +63,7 @@
                     <th>N</th>
                     <th>Algoritmo</th>
                     <th>Tiempo de Ejecución</th>
+                    <th>Nodos Expandidos</th>
                 </tr>
             </table>
         </div>
