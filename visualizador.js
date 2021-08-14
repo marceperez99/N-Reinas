@@ -3,12 +3,12 @@ const generateTablero = (n) => {
     tabla.className='border rounded mx-auto m-2 text-center'
     for(let i = 0;i < n; i++){
         const row = document.createElement('tr');
-        for(let j = 0; j < n; j++){
+        for (let j = 0; j < n; j++) {
             const cell = document.createElement('td');
-            if((i+j)%2 === 0 ){
-                cell.setAttribute('style','background-color: grey');
-            }else{
-                cell.setAttribute('style','background-color: white');
+            if ((i + j) % 2 === 0) {
+                cell.setAttribute('style', 'background-color: grey');
+            } else {
+                cell.setAttribute('style', 'background-color: white');
             }
         
             const queen = document.createElement('img');
@@ -27,7 +27,7 @@ const generateTablero = (n) => {
     return tabla;
 }
 
-const graficar = (i,j,action) => {
+const graficar_reina = (i,j,action) => {
     const queen = document.getElementById(`queen_${i}_${j}`);
     switch(action){
         case ACTIONS.COLOCAR:
@@ -77,7 +77,7 @@ document.getElementById('iniciar_simulacion').addEventListener('click',() => {
     }
 
     const beforeTime = new Date();
-    algorithm(state.n);
+    algorithm(graficar_reina,state.n);
     const afterTime = new Date();
 
     const executionTime = afterTime.getTime() - beforeTime.getTime();
