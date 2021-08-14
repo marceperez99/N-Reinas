@@ -1,3 +1,5 @@
+let pasos_backtracking = 0
+let estados = new Map()
 function verificar_conflictos(columnas) {
     var len = columnas.length, last = columnas[len - 1], prev = len - 2
 
@@ -17,24 +19,20 @@ function colocar_reina(total, reinas, columnas) {
 
     for (var columna = 0; columna < total; columna++) {
         columnas.push(columna)
-        pasos++
+        estados.add(columnas.join(''))
+        pasos_backtracking++
         if (!verificar_conflictos(columnas) &&
             colocar_reina(total, reinas - 1, columnas)) {
         return columnas
         }
         columnas.pop(columna)
     }
-
-    return null
+    return undefined
 }
-  
-const algoritmo_backtracking = (graficar_reina, n) => {
+const algoritmo_backtracking = (n) => {
 
     n = parseInt(n)
-    pasos = 0
     reinas = colocar_reina(n, n)
-    for (let i = 0; i < k; i++) {
-        graficar_reina(reinas[i], i, ACTIONS.COLOCAR)
-    }
+    return {reinas:reinas, pasos: pasos_backtracking,estados:estados.size}
 }
   

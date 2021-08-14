@@ -38,7 +38,7 @@ function getDominio(reinas, k, n){
     return dominio
 }
 
-const algoritmo_las_vegas = (graficar_reina,n) => {
+const algoritmo_las_vegas = (n) => {
     n = parseInt(n)
     let reinas = new Array(n)
     let timeout = false
@@ -65,21 +65,13 @@ const algoritmo_las_vegas = (graficar_reina,n) => {
         estados.add(reinas.slice(0,k).join(''))
 
         i++
-
-        if(i > 100000) break
         if(timeout) break
     
     }
 
     let cantidad_estados = estados.size
-    console.log(cantidad_estados)
-    console.log(i)
-
-    if(k == n){
-        for (let i = 0; i < k; i++) {
-            graficar_reina(reinas[i], i, ACTIONS.COLOCAR)
-        }
-    }else{
-        console.log("No se encontró una solución")
-    }
+    if (k == n)
+        return {reinas: reinas, pasos: i,estados: cantidad_estados}
+    else
+        return undefined
 };
