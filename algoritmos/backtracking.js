@@ -29,7 +29,7 @@ function colocar_reina(total, reinas, columnas) {
     }
     return undefined
 }
-const algoritmo_backtracking = (graficar_reina, n) => {
+const algoritmo_backtracking = (n) => {
 
     n = parseInt(n)
     reinas = colocar_reina(n, n)

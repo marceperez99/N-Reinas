@@ -95,7 +95,7 @@ function getNuevaPosicion(conflictos){
     return minimos[getRandomInt(minimos.length)]
     
 }
-const algoritmo_heuristico = (graficar_reina,n) => {
+const algoritmo_heuristico = (n) => {
     
     n = parseInt(n)
     if (n == 2 || n == 3)

@@ -38,7 +38,7 @@ function getDominio(reinas, k, n){
     return dominio
 }
 
-const algoritmo_las_vegas = (graficar_reina,n) => {
+const algoritmo_las_vegas = (n) => {
     n = parseInt(n)
     let reinas = new Array(n)
     let timeout = false
