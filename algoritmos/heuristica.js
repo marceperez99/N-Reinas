@@ -109,7 +109,7 @@ const algoritmo_heuristico = (graficar_reina,n) => {
         estados.add(reinas.join(''))
         let reinasEnConflicto = getVariablesEnConflicto(reinas)
         if (reinasEnConflicto.length == 0) {
-            return {reinas: reinas, pasos: paso, estados:estados}
+            return {reinas: reinas, pasos: paso, estados:estados.size}
         }
         let columnaEnConflicto = getColumnaEnConflicto(reinasEnConflicto,ultimaColumna)
         ultimaColumna = columnaEnConflicto
