@@ -33,6 +33,6 @@ const algoritmo_backtracking = (n) => {
 
     n = parseInt(n)
     reinas = colocar_reina(n, n)
-    return {reinas:reinas, pasos: pasos_backtracking,estados:estados.size}
+    return reinas ? {reinas:reinas, pasos: pasos_backtracking,estados:estados.size} : undefined;
 }
   

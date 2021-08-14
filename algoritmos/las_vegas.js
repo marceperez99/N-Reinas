@@ -40,14 +40,15 @@ function getDominio(reinas, k, n){
 
 const algoritmo_las_vegas = (n) => {
     n = parseInt(n)
-    let reinas = new Array(n)
-    let timeout = false
-    let estados = new Set()
+    let reinas = new Array(n);
+    let timeout = parseInt(state.timeout);
+    let estados = new Set();
 
     let i = 0
     let k = 0
-    while(k < n){
-
+    
+    while(timeout > 0 && k < n){
+        const time = new Date();
         if(k == 0){
             reinas[0] = getRandomInt(n)
             k++
@@ -65,8 +66,8 @@ const algoritmo_las_vegas = (n) => {
         estados.add(reinas.slice(0,k).join(''))
 
         i++
-        if(timeout) break
-    
+        
+        timeout -= (new Date().getTime() - time.getTime());
     }
 
     let cantidad_estados = estados.size
