@@ -98,21 +98,18 @@ function getNuevaPosicion(conflictos){
 const algoritmo_heuristico = (graficar_reina,n) => {
     n = parseInt(n)
     let reinas = new Array(n)
-    
+    let estados = new Map()
+
     inicializarTableroAleatoriamente(reinas)
+    
     let paso = 0
     let ultimaColumna = -1
     while (true) {
         paso++
+        estados.add(reinas.join(''))
         let reinasEnConflicto = getVariablesEnConflicto(reinas)
         if (reinasEnConflicto.length == 0) {
-            console.log(reinas) 
-            console.log(paso)
-            for (let i = 0; i < n; i++) {
-                graficar_reina(reinas[i],i,ACTIONS.COLOCAR)
-            }
-            //return {reinas: reinas, pasos: paso}
-            break;
+            return {reinas: reinas, pasos: paso, estados:estados}
         }
         let columnaEnConflicto = getColumnaEnConflicto(reinasEnConflicto,ultimaColumna)
         ultimaColumna = columnaEnConflicto
