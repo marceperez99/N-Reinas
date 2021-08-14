@@ -41,27 +41,39 @@ function getDominio(reinas, k, n){
 const algoritmo_las_vegas = (graficar_reina,n) => {
     n = parseInt(n)
     let reinas = new Array(n)
-    let timeout = false;
+    let timeout = false
+    let estados = new Set()
 
-    reinas[0] = getRandomInt(n)
     let i = 0
-    let k = 1
+    let k = 0
     while(k < n){
-        let dominio = getDominio(reinas, k, n)
-        
-        if(dominio){
-            reinas[k] = dominio[getRandomInt(dominio.length)]
+
+        if(k == 0){
+            reinas[0] = getRandomInt(n)
             k++
         }else{
-            k--
+            let dominio = getDominio(reinas, k, n)
+            
+            if(dominio.length != 0){
+                reinas[k] = dominio[getRandomInt(dominio.length)]
+                k++
+            }else{
+                k = 0
+            }
         }
-        
+
+        estados.add(reinas.slice(0,k).join(''))
+
         i++
 
-        if(i > 1000) break
+        if(i > 100000) break
         if(timeout) break
     
     }
+
+    let cantidad_estados = estados.size
+    console.log(cantidad_estados)
+    console.log(i)
 
     if(k == n){
         for (let i = 0; i < k; i++) {
