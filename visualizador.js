@@ -105,15 +105,21 @@ document.getElementById('iniciar_simulacion').addEventListener('click', () => {
         case 'heuristica':
             algorithm = algoritmo_heuristico;
         break;
+        case 'backtracking_all_solutions':
+            algorithm = algoritmo_backtracking_all_solutions;
+        break;
     }
 
     const beforeTime = new Date();
     const result = algorithm(state.n);
     const afterTime = new Date();
-    console.log(result);
     if(result){
-        if(state.graficarSolucion)
-            result.reinas.forEach((reina, i) => {graficarReina(i, reina,ACTIONS.COLOCAR)});
+        if(state.graficarSolucion){
+            const reinas = state.algorithm === 'backtracking_all_solutions' ? [] : result.reinas;
+            console.log(reinas);
+            reinas.forEach((reina, i) => {graficarReina(i, reina,ACTIONS.COLOCAR)});
+        }
+            
 
         const executionTime = afterTime.getTime() - beforeTime.getTime();
         registarResultado(state.n, state.algorithm, executionTime, result.estados);

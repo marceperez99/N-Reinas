@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <h5 class="text-center m-4 h3">Problema N-Reinas</h5>
-        <h4>Parametros de la Simulacion</h4>
+        <h4>Parametros de la Simulación</h4>
         <hr>
         <div class="row">
             <label class="col-4" for="n_size">N(Tamaño del tablero)</label>
@@ -29,6 +29,7 @@
                 <div class="input-group mb-3">
                     <select class="custom-select" id="algoritmo_elegido">
                       <option value="backtracking">Backtracking</option>
+                      <option value="backtracking_all_solutions">Backtracking (Todas las Soluciones)</option>
                       <option value="las_vegas">Las Vegas</option>
                       <option value="heuristica">Heuristica</option>
                       
@@ -62,7 +63,7 @@
                 <tr>
                     <th>N</th>
                     <th>Algoritmo</th>
-                    <th>Tiempo de Ejecución</th>
+                    <th>Tiempo de Ejecución (ms)</th>
                     <th>Nodos Expandidos</th>
                 </tr>
             </table>

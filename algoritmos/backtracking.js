@@ -44,13 +44,12 @@ function colocar_reina(total, reinas, columnas) {
     return undefined
 }
 
-const soluciones = []
+let soluciones = []
+
 function colocar_reina2(total, reinas, columnas) {
 
     if (reinas === 0){
-        for(var i = 0; i < total; i++){
-            soluciones.push(columnas[i])
-        }
+        soluciones.push([...columnas]);
         return columnas
     }
     columnas = columnas || []
@@ -68,7 +67,24 @@ function colocar_reina2(total, reinas, columnas) {
 const algoritmo_backtracking = (n) => {
 
     n = parseInt(n)
+    estados = new Set();
     reinas = colocar_reina(n, n)
-    return reinas ? {reinas:reinas, pasos: pasos_backtracking,estados:estados.size} : undefined;
+    return reinas ? {
+        reinas: reinas, 
+        pasos: pasos_backtracking,
+        estados:estados.size
+    } : undefined;
+}
+const algoritmo_backtracking_all_solutions = (n) => {
+
+    n = parseInt(n);
+    soluciones = [];
+    estados = new Set();
+    reinas = colocar_reina2(n, n);
+    return soluciones ? {
+        reinas: soluciones, 
+        pasos: pasos_backtracking,
+        estados:estados.size
+    } : undefined;
 }
 
