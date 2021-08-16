@@ -1,9 +1,9 @@
 # Integrantes
 
 * Candia Santacruz, Francisco Fernando
-* Dure Ovando, Ivan Maximiliano
+* Duré Obando, Iván Maximiliano
 * Fleitas Bustamante, Hugo Javier
-* Perez Britez, Marcelo Nicolas
+* Pérez Britez, Marcelo Nicolás
 
 # Ejecución del Programa
 
