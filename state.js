@@ -10,7 +10,7 @@ const ACTIONS = {
 }
 const ALGORITMOS = {
     backtracking: "Backtracking",
-    backtracking_all_solutions: "Backtracking(Todas las soluciones)",
+    backtracking_all_solutions: "Backtracking (Todas las soluciones)",
     las_vegas: "Las Vegas",
     heuristica: "Heuristica"
 }

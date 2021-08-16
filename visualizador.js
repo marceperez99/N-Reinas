@@ -122,7 +122,7 @@ document.getElementById('iniciar_simulacion').addEventListener('click', () => {
             
 
         const executionTime = afterTime.getTime() - beforeTime.getTime();
-        registarResultado(state.n, state.algorithm, executionTime, result.estados);
+        registarResultado(state.n, state.algorithm, executionTime.toLocaleString('de-DE'), result.estados.toLocaleString('de-DE'));
     }else{
         registarResultado(state.n, state.algorithm, 'No hay solución', '-');
     }
